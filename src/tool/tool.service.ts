@@ -39,6 +39,21 @@ export class ToolService {
     return tool;
   }
 
+  async findBySearch(search: string): Promise<Tool[]> {
+    const tool = await this.toolModel
+      .find({
+        $or: [
+          { title: { $regex: '.*' + search + '.*' } },
+          { description: { $regex: '.*' + search + '.*' } },
+          { link: { $regex: '.*' + search + '.*' } },
+          { tags: { $regex: '.*' + search + '.*' } },
+        ],
+      })
+      .exec();
+
+    return tool;
+  }
+
   async update(id: string, toolDto: ToolDto): Promise<void> {
     const tool = await this.toolModel.findOne({ _id: id });
 

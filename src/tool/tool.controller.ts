@@ -50,10 +50,16 @@ export class ToolController {
   })
   @ApiQuery({ name: 'tag', required: false })
   @Get()
-  async findAll(@Query() { tag }: { tag: string }): Promise<ToolDto[]> {
+  async findAll(
+    @Query() { tag, search }: { tag: string; search: string },
+  ): Promise<ToolDto[]> {
     let tools: Tool[];
     if (tag) {
       tools = await this.toolService.findByTag(tag);
+      return tools.map(tool => ToolTransformer.modelToDto(tool));
+    }
+    if (search) {
+      tools = await this.toolService.findBySearch(search);
       return tools.map(tool => ToolTransformer.modelToDto(tool));
     }
     tools = await this.toolService.findAll();

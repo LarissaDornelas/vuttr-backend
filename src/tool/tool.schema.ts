@@ -6,17 +6,17 @@ export type ToolDocument = Tool & Document;
 @Schema()
 export class Tool {
   _id: string;
-  
-  @Prop({ required: true })
+
+  @Prop({ required: true, text: true })
   title: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, text: true })
   link: string;
 
-  @Prop()
+  @Prop({ text: true })
   description: string;
 
-  @Prop([String])
+  @Prop({ text: true })
   tags: string[];
 }
 
