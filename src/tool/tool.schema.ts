@@ -5,6 +5,8 @@ export type ToolDocument = Tool & Document;
 
 @Schema()
 export class Tool {
+  _id: string;
+  
   @Prop({ required: true })
   title: string;
 
