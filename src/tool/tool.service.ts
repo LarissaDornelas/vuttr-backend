@@ -31,10 +31,9 @@ export class ToolService {
   }
 
   async findByTag(tag: string): Promise<Tool[]> {
-    const tool = this.toolModel
-      .find()
-      .where('tags')
-      .in([tag]);
+    const tool = this.toolModel.find({
+      tag: { $regex: '.*' + tag + '.*', $options: 'i' },
+    });
 
     return tool;
   }
@@ -43,10 +42,10 @@ export class ToolService {
     const tool = await this.toolModel
       .find({
         $or: [
-          { title: { $regex: '.*' + search + '.*' } },
-          { description: { $regex: '.*' + search + '.*' } },
-          { link: { $regex: '.*' + search + '.*' } },
-          { tags: { $regex: '.*' + search + '.*' } },
+          { title: { $regex: '.*' + search + '.*', $options: 'i' } },
+          { description: { $regex: '.*' + search + '.*', $options: 'i' } },
+          { link: { $regex: '.*' + search + '.*', $options: 'i' } },
+          { tags: { $regex: '.*' + search + '.*', $options: 'i' } },
         ],
       })
       .exec();
