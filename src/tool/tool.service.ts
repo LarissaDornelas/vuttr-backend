@@ -30,6 +30,15 @@ export class ToolService {
     return tool;
   }
 
+  async findByTag(tag: string): Promise<Tool[]> {
+    const tool = this.toolModel
+      .find()
+      .where('tags')
+      .in([tag]);
+
+    return tool;
+  }
+
   async update(id: string, toolDto: ToolDto): Promise<void> {
     const tool = await this.toolModel.findOne({ _id: id });
 
