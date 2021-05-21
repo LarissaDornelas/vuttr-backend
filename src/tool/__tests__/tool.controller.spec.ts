@@ -1,10 +1,7 @@
-import { NotFoundException } from '@nestjs/common';
-import { MongooseModule, MongooseModuleOptions } from '@nestjs/mongoose';
 import { Test } from '@nestjs/testing';
 
 import { ToolController } from '../tool.controller';
 import { ToolDto } from '../tool.dto';
-import { Tool, ToolSchema } from '../tool.schema';
 import { ToolService } from '../tool.service';
 import {
   toolDtoMock,
