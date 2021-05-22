@@ -31,9 +31,11 @@ export class ToolService {
   }
 
   async findByTag(tag: string): Promise<Tool[]> {
-    const tool = this.toolModel.find({
-      tag: { $regex: '.*' + tag + '.*', $options: 'i' },
-    });
+    const tool = this.toolModel
+      .find({
+        tags: { $regex: '.*' + tag + '.*', $options: 'i' },
+      })
+      .exec();
 
     return tool;
   }
