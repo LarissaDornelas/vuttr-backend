@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsArray, IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class ToolDto {
-  id: string;
+  id?: string;
 
   @ApiProperty({ description: "Tool's title", example: 'Notion' })
   @IsString()

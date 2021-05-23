@@ -51,7 +51,7 @@ export class ToolController {
   @ApiQuery({ name: 'tag', required: false })
   @Get()
   async findAll(
-    @Query() { tag, search }: { tag: string; search: string },
+    @Query() { tag, search }: { tag?: string; search?: string },
   ): Promise<ToolDto[]> {
     let tools: Tool[];
     if (tag) {

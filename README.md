@@ -1,5 +1,5 @@
 <h1 align="center">
-  VUTTR - Very Usefull Tools To Remember
+  VUTTR - Very Usefull Tools to Remember (Backend)
   <br>
 </h1>
 
@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="#tecnologies">Tecnologies</a> •
-  <a href="#how-to-run">Running the Project</a>
+  <a href="#how-to-run">Running the Project</a> 
 </p>
 
 ## Tecnologies
@@ -52,6 +52,14 @@ After following all the steps you can start the application with this command:
 $ npm run start:dev
 ```
 
+For running the tests use this command:
+
+```bash
+
+$ npm run test
+```
+
 ## Notes
 
+- The link for production API is located above in Repository Details
 - The Swagger documentation is found on the endpoint [/api](https://vuttr-backend-bossa.herokuapp.com/api/)

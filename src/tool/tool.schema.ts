@@ -1,7 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ToolDocument = Tool & Document;
+export interface ToolDoc extends Document {
+  title: string;
+  link: string;
+  description?: string;
+  tags: string[];
+}
 
 @Schema()
 export class Tool {

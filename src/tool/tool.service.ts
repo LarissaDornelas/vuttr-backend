@@ -13,9 +13,7 @@ export class ToolService {
   ) {}
 
   async create(toolDto: ToolDto): Promise<Tool> {
-    const createdTool = new this.toolModel(toolDto);
-
-    return createdTool.save();
+    return await this.toolModel.create(toolDto);
   }
 
   async findAll(): Promise<Tool[]> {
@@ -23,7 +21,7 @@ export class ToolService {
   }
 
   async findOne(id: string): Promise<Tool> {
-    const tool = this.toolModel.findById(id);
+    const tool = this.toolModel.findOne({ _id: id });
 
     if (!tool) throw new NotFoundException();
 
@@ -64,7 +62,7 @@ export class ToolService {
   }
 
   async delete(id: string): Promise<void> {
-    const tool = this.toolModel.findById(id);
+    const tool = this.toolModel.findOne({ _id: id });
     if (!tool) throw new NotFoundException();
 
     await this.toolModel.deleteOne({ _id: id });
